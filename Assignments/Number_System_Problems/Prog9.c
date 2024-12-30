@@ -10,25 +10,32 @@
 #include<stdio.h>
 void main() {
 
-	long num = 0, digSum = 0, factSum = 0, rem = 0;
+	int num = 0, factSum = 0, rem = 0;
 	printf("Enter Number : ");
-	scanf("%ld",&num);
+	scanf("%d",&num);
 
-	long itr = num;
+	int itr = num;
 
-	while(itr > 0) {
+	while(itr != 0) {
 
 		rem = itr % 10;
 
-		while(rem > 0) {
+		int i = 1;
 
-			digSum += rem;
-			rem--;
+		int digFact = 1;
+
+		while(i <= rem) {
+
+			digFact *= i;
+			i++;
 		}
 
-		factSum += digSum;
+		factSum += digFact;
 		itr /= 10;
 	}
 
-	printf("sum of Factorial of %ld is %ld.\n",num,factSum);
+	if(num == factSum)
+		printf("%d is a Strong Number.\n",num);
+	else
+		printf("%d is not a Strong Number.\n",num);
 }
